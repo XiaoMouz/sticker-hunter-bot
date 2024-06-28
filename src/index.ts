@@ -272,10 +272,6 @@ bot.on(callbackQuery("data"), verifyOperator, async (ctx) => {
     return;
   }
   if (data.startsWith("disable_join_check")) {
-    const operators = await getValue<User[]>("operators");
-    if (!operators?.find((o) => o.id === ctx.from.id)) {
-      return ctx.answerCbQuery("你不是管理员，无法执行此操作");
-    }
     await setValue("disable_join_check", true);
     await ctx.answerCbQuery("已关闭新成员检查");
     await ctx.editMessageText("👩‍🦼已关闭新成员检查");

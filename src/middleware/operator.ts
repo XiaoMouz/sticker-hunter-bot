@@ -9,7 +9,7 @@ export async function verifyOperator<T extends Context>(
 ): Promise<void> {
   const operators = await getValue<User[]>("operators");
   if (operators?.find((o) => o.id === ctx.from?.id)) {
-    next();
+    return next();
   }
   await ctx.reply("你不是管理员，无法执行此操作");
 }
