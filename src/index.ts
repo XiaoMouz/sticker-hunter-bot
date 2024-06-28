@@ -189,7 +189,7 @@ bot.command("remove_operator", verifyAdmin, async (ctx) => {
   });
 });
 
-bot.on(callbackQuery("data"), async (ctx) => {
+bot.on(callbackQuery("data"), verifyOperator, async (ctx) => {
   const data = ctx.callbackQuery.data;
   if (data === "remove_all_block_sticker") {
     await setValue("block_stickers", []);
@@ -231,6 +231,10 @@ bot.on(callbackQuery("data"), async (ctx) => {
     return;
   }
   if (data.startsWith("remove_operator")) {
+    const adminIds = await getValue<number[]>("admin_ids");
+    if (!adminIds?.includes(ctx.from.id)) {
+      return ctx.reply("你不是管理员，无法执行此操作");
+    }
     const userId = parseInt(data.split("|")[1]);
     const operators = (await getValue<User[]>("operators")) || [];
     const newOperators = operators.filter((o) => o.id !== userId);
@@ -252,10 +256,6 @@ bot.on(callbackQuery("data"), async (ctx) => {
     return;
   }
   if (data.startsWith("enable_join_check")) {
-    const operators = await getValue<User[]>("operators");
-    if (!operators?.find((o) => o.id === ctx.from.id)) {
-      return ctx.answerCbQuery("你不是管理员，无法执行此操作");
-    }
     await setValue("disable_join_check", false);
     await ctx.answerCbQuery("已开启新成员检查");
     await ctx.editMessageText("👮已开启新成员检查");
