@@ -1,26 +1,24 @@
 {
-  "name": "telegram-bot-starter",
+  "name": "sticker-hunter-bot",
   "private": true,
   "type": "module",
   "scripts": {
     "prepare": "nitropack prepare",
     "dev": "nitropack dev",
     "build": "nitropack build",
-    "preview": "node .output/server/index.mjs",
-    "lint": "eslint --cache .",
-    "format": "prettier --cache --write .",
-    "typecheck": "nitropack prepare && tsc"
+    "preview": "node .output/server/index.mjs"
   },
   "dependencies": {
+    "@cloudflare/workers-types": "^4.20240620.0",
+    "bs58": "^6.0.0",
     "nitropack": "latest",
-    "telegraf": "^4.16.3"
+    "telegraf": "^4.16.3",
+    "unstorage": "^1.10.2",
+    "wrangler": "^3.62.0"
   },
   "devDependencies": {
-    "@sxzz/eslint-config": "^3.13.0",
-    "@sxzz/prettier-config": "^2.0.2",
-    "eslint": "^9.5.0",
-    "prettier": "^3.3.2",
+    "@types/node": "^20.14.9",
     "typescript": "^5.5.2"
   },
-  "prettier": "@sxzz/prettier-config"
+  "packageManager": "pnpm@9.1.0"
 }

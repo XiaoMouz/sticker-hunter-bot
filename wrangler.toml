@@ -1,0 +1,11 @@
+name = "telegroup-manager"
+# account_id = "<(optional) your Cloudflare account id, retrievable from the Cloudflare dashboard>"
+# route = "<(optional) mainly useful when you want to setup custom domains>"
+
+kv_namespaces = [
+    { binding = "KV_SETTINGS", id = "763eac72780848cb954b08f8f9240f6b" },
+]
+
+[vars]
+BOT_TOKEN = "7127605463:AAHPwtpTFGw497F1sF5efl2t5QSePTgij5o"
+SECRET_HASH = "55e176def558b13e794921e9c330e71fab5e3177a208d0308a449833472e8b7a"
