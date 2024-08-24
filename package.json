@@ -1,0 +1,24 @@
+{
+  "name": "sticker-hunter-bot",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "nitropack prepare",
+    "dev": "nitropack dev",
+    "build": "nitropack build",
+    "preview": "node .output/server/index.mjs"
+  },
+  "dependencies": {
+    "@cloudflare/workers-types": "^4.20240620.0",
+    "bs58": "^6.0.0",
+    "nitropack": "latest",
+    "telegraf": "^4.16.3",
+    "unstorage": "^1.10.2",
+    "wrangler": "^3.62.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "typescript": "^5.5.2"
+  },
+  "packageManager": "pnpm@9.1.0"
+}
